@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portraits Composed by Her — Portfolio & Booking</title>
+  <meta name="description" content="Portrait photography that tells the story you feel in your heart. Book a session and browse the portfolio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0f0f12;
+      --card: #16161b;
+      --muted: #9aa0a6;
+      --accent: #e6b7ff;
+      --accent-2: #ffd4a3;
+      --text: #f4f4f5;
+      --shadow: 0 20px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html, body{margin:0; padding:0; font-family:Poppins, sans-serif; color:var(--text); background:var(--bg);}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{max-width:1100px; margin:0 auto; padding:0 20px}
+    header{position:sticky; top:0; backdrop-filter: blur(10px); background:rgba(15,15,18,.6); z-index:20; border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:70px}
+    .brand{display:flex; gap:.6rem; align-items:center; font-weight:800}
+    .logo{width:36px; height:36px; border-radius:10px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow)}
+    .menu{display:flex; gap:1.2rem}
+    .menu a{opacity:.85}
+    .menu a:hover{opacity:1}
+    .btn{display:inline-flex; align-items:center; justify-content:center; padding:.85rem 1.1rem; border-radius:14px; border:1px solid rgba(255,255,255,.1); background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03)); box-shadow: var(--shadow); transition:.25s transform ease}
+    .btn:hover{transform: translateY(-2px)}
+    .btn.primary{background:linear-gradient(135deg, var(--accent), var(--accent-2)); color:#1a1a1d; font-weight:700; border:none}
+    .hero{padding:80px 0 40px;}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:42px}
+    .eyebrow{font-size:.9rem; letter-spacing:.24em; text-transform:uppercase; color:var(--muted)}
+    h1{font-size:clamp(2rem, 5vw, 3.4rem); line-height:1.08; margin:.3rem 0 1rem}
+    .lead{font-size:1.08rem; color:#d9d9df}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .hero-card img{border-radius:14px}
+    .cta-row{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+    section{padding:64px 0}
+    .section-title{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px}
+    .section-title h2{font-size:1.8rem; margin:0}
+    .muted{color:var(--muted)}
+    .grid{display:grid; gap:14px}
+    .grid.cols-3{grid-template-columns: repeat(3, 1fr)}
+    .tile{position:relative; overflow:hidden; border-radius:16px; border:1px solid rgba(255,255,255,.08)}
+    .tile img{width:100%; height:100%; object-fit:cover; transition:.4s transform ease}
+    .tile:hover img{transform:scale(1.04)}
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px; box-shadow: var(--shadow)}
+    .price{font-weight:800; font-size:1.5rem; margin:.4rem 0}
+    .pill{display:inline-block; padding:.25rem .6rem; border-radius:999px; background:rgba(230,183,255,.14); color:#f7eaff; border:1px solid rgba(230,183,255,.25); font-size:.8rem; margin-right:.4rem}
+    .quote{font-size:1.05rem; line-height:1.6}
+    .booking{display:grid; grid-template-columns: 1.1fr .9fr; gap:22px}
+    form{display:grid; gap:12px}
+    label{font-size:.9rem; color:var(--muted)}
+    input, select, textarea{width:100%; padding:12px 14px; background:#0e0e11; color:var(--text); border-radius:12px; border:1px solid rgba(255,255,255,.12)}
+    textarea{min-height:120px}
+    .notice{font-size:.85rem; color:var(--muted)}
+    footer{padding:40px 0 60px; border-top:1px solid rgba(255,255,255,.08)}
+    .foot{display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
+    .lightbox{position:fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:50}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:92vw; max-height:86vh; border-radius:12px}
+    .close{position:fixed; top:18px; right:22px; font-size:2rem; cursor:pointer;}
+    @media (max-width: 900px){
+      .hero-grid, .booking{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr;}
+      .grid.cols-3{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 560px){
+      .grid.cols-3{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="logo"></span> Portraits Composed by Her</div>
+      <nav class="menu">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#services">Services</a>
+        <a href="#booking" class="btn">Book</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Portrait Photographer</div>
+        <h1>Portraits that feel like <em>you</em>.</h1>
+        <p class="lead">Story-driven imagery for individuals, couples, and families. My editing follows the mood and energy of the moment—because your story isn’t one-tone.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#booking">Book a Session</a>
+          <a class="btn" href="#portfolio">View Portfolio</a>
+        </div>
+        <p class="notice" style="margin-top:10px">Based in Boise, ID • Available for travel</p>
+      </div>
+      <div class="hero-card">
+        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1920&auto=format&fit=crop" alt="Portrait sample" />
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-title">
+        <h2>Portfolio</h2>
+        <span class="muted">Tap to enlarge</span>
+      </div>
+      <div class="grid cols-3">
+        <a class="tile" href="#"><img src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?q=80&w=900&auto=format&fit=crop" alt="Portrait 1" loading="lazy"></a>
+        <a class="tile" href="#"><img src="https://images.unsplash.com/photo-1519098901909-b1553a68759b?q=80&w=900&auto=format&fit=crop" alt="Portrait 2" loading="lazy"></a>
+        <a class="tile" href="#"><img src="https://images.unsplash.com/photo-1517090172081-1708333549a6?q=80&w=900&auto=format&fit=crop" alt="Portrait 3" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Services & Pricing</h2>
+        <span class="muted">Custom packages available</span>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <span class="pill">Most Popular</span>
+          <h3>Signature Portrait</h3>
+          <p class="muted">60 minutes • 1 location • up to 2 outfits</p>
+          <div class="price">$250</div>
+        </div>
+        <div class="card">
+          <h3>Couples & Families</h3>
+          <p class="muted">75 minutes • 1–2 locations</p>
+          <div class="price">$350</div>
+        </div>
+        <div class="card">
+          <h3>Branding Session</h3>
+          <p class="muted">90 minutes • 2–3 looks</p>
+          <div class="price">$480</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <div class="container">
+      <div class="section-title">
+        <h2>Book Your Session</h2>
+      </div>
+      <div class="booking">
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+          <div>
+            <label for="name">Full Name</label>
+            <input id="name" name="name" required />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email" required />
+          </div>
+          <button class="btn primary" type="submit">Request to Book</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div class="brand"><span class="logo"></span> Portraits Composed by Her</div>
+      <div class="muted">© <span id="year"></span> All rights reserved</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
